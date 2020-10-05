@@ -3,4 +3,7 @@
     <event name="catalog_product_save_after">
         <observer name="save_feature_product" instance="AHT\FeatureProduct\Observer\ProductSaveAfterObserver" />
     </event>
+    <event name="catalog_product_delete_after">
+        <observer name="delete_feature_product" instance="AHT\FeatureProduct\Observer\ProductDeleteAfterObserver" />
+    </event>
 </config>

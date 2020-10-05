@@ -14,7 +14,7 @@
             <parameter name="template" xsi:type="select" required="true" visible="true">
                 <label translate="true">Template</label>
                 <options>
-                    <option name="default" value="feature/grid.phtml" selected="true">
+                    <option name="default" value="feature/list.phtml" selected="true">
                         <label translate="true">List feature product</label>
                     </option>
                 </options>

@@ -35,10 +35,8 @@ class Delete extends \Magento\Backend\App\Action
             $feature_id = $this->getRequest()->getParam('feature_id');
             $feature = $this->_featureProductFactory->create()->load($feature_id);
             $this->_featureProductResource->delete($feature);
-
-            $product = $this->_product->load($feature->getEntityId());
-            //print_r($product->getData());die();
-            $this->_productResource->save($product);
+            $this->_product->load($feature->getEntityId())->setFeatureProduct(0);
+            $this->_product->save();
         } catch (\Exception $e) {
             $this->messageManager->addError(__('Unable to process. please, try again.'));
             $resultRedirect = $this->resultRedirectFactory->create();

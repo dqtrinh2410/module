@@ -6,14 +6,17 @@
 use Magento\Framework\App\Action\Action;
 
 ?>
+<?php if ($block->getHelperData()->getFeatureConfig('is_enabled')) : ?>
 <?php if ($exist = ($block->getProductCollection() && $block->getProductCollection()->getSize())) : ?>
     <?php
     $type = 'widget-product-grid';
-
     $mode = 'grid';
-    //var_dump($block->createCollection()->getData());die('create');
     $image = 'new_products_content_widget_grid';
-    $items = $block->createCollection()->getData();
+    $items = $block->getProductCollection()->getItems();
+//    foreach ($items as $item) {
+//        print_r($item->getData());
+//    }
+//    die();
     $showWishlist = true;
     $showCompare = true;
     $showCart = true;
@@ -31,8 +34,7 @@ use Magento\Framework\App\Action\Action;
             <div class="products-<?= /* @noEscape */ $mode ?> <?= /* @noEscape */ $mode ?>">
                 <ol class="product-items <?= /* @noEscape */ $type ?>">
                     <?php $iterator = 1; ?>
-                    <?php foreach ($items as $item) : ?>
-                        <?php $_item = $block->getProductById($item['entity_id']); ?>
+                    <?php foreach ($items as $_item) : ?>
                         <?= /* @noEscape */ ($iterator++ == 1) ? '<li class="product-item">' : '</li><li class="product-item">' ?>
                         <div class="product-item-info">
                             <a href="<?= $block->escapeUrl($block->getProductUrl($_item)) ?>" class="product-item-photo">
@@ -47,7 +49,8 @@ use Magento\Framework\App\Action\Action;
                                     </a>
                                 </strong>
                                 <?php if ($templateType) : ?>
-                                    <?= $block->getReviewsSummaryHtml($_item, $templateType) ?>
+                                    <?= $block->getReviewsSummaryHtml($_item, $templateType)
+                                    ?>
                                 <?php endif; ?>
 
                                 <?= $block->getProductPriceHtml($_item, $type) ?>
@@ -112,4 +115,5 @@ use Magento\Framework\App\Action\Action;
             <?= $block->getPagerHtml() ?>
         </div>
     </div>
+<?php endif;?>
 <?php endif;?>

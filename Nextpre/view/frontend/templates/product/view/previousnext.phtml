@@ -1,0 +1,19 @@
+<?php 
+
+$_product = $block->getProduct();
+
+$prev_product = $block->getPrevProduct($_product);
+$next_product = $block->getNextProduct($_product);
+$enable = $block->getConfigure();
+
+?>
+<?php if($enable && ($prev_product || $next_product)): ?>
+    <div class="product-previous-next">
+        <?php if($next_product): ?>
+            <a class="btn-next-product" title="Next" href="<?php echo $next_product->getProductUrl(); ?>"><span>NEXT ></span></a>
+        <?php endif; ?>
+        <?php if($prev_product): ?>
+            <a class="btn-prev-product" title="Previous" href="<?php echo $prev_product->getProductUrl(); ?>"><span>< PREVIOUS</span></a>
+        <?php endif; ?>
+    </div> 
+<?php endif; ?>

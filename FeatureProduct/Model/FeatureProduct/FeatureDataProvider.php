@@ -48,8 +48,7 @@ class FeatureDataProvider extends ProductDataProvider
              $arrayData['feature_id'] = $featureProduct['feature_id'];
              array_push($arrayItems['items'],$arrayData);
          }
-         //print_r($arrayItems);die();
+        //  print_r($arrayItems);die();
          return $arrayItems;
-
     }
 }

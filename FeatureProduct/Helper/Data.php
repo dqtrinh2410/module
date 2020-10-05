@@ -17,7 +17,6 @@ class Data extends AbstractHelper
 
     public function getFeatureConfig($code, $storeId = null)
     {
-        //print_r($this->getConfigValue(self::XML_PATH_FEATURE_PRODUCT .'group_feature_product/'. $code, $storeId));die('id');
         return $this->getConfigValue(self::XML_PATH_FEATURE_PRODUCT .'group_feature_product/'. $code, $storeId);
     }
 

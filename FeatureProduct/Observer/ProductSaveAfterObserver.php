@@ -5,6 +5,8 @@ use Magento\Framework\Event\Observer;
 use Magento\Framework\Event\ObserverInterface;
 use AHT\FeatureProduct\Model\ResourceModel\FeatureProduct as FeatureResource;
 use AHT\FeatureProduct\Model\ResourceModel\FeatureProduct\Collection as FeatureCollection;
+use AHT\FeatureProduct\Model\FeatureProductFactory;
+use Psr\Log\LoggerInterface;
 
 use Magento\Framework\Exception\AlreadyExistsException;
 
@@ -16,8 +18,8 @@ class ProductSaveAfterObserver implements  ObserverInterface{
     protected $_featureCollection;
 
     public function __construct(
-        \Psr\Log\LoggerInterface $logger,
-        \AHT\FeatureProduct\Model\FeatureProductFactory $featureProductFactory,
+        LoggerInterface $logger,
+        FeatureProductFactory $featureProductFactory,
         FeatureResource $featureResource,
         FeatureCollection $featureCollection
     ) {
